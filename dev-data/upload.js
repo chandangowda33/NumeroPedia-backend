@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 const Mulank = require("../model/mulankModel");
 const Numeroscope = require("../model/numeroscopeModel");
 const Rajyog = require("../model/rajyogModel");
+const Combination = require("../model/combinationModel");
 
 dotenv.config({ path: "./config.env" });
 
@@ -26,11 +27,16 @@ const numeroscope = JSON.parse(
 
 const rajyog = JSON.parse(fs.readFileSync(`${__dirname}/rajyog.json`, "utf-8"));
 
+const combination = JSON.parse(
+  fs.readFileSync(`${__dirname}/combination.json`, "utf-8")
+);
+
 const importData = async () => {
   try {
     await Mulank.create(mulank);
     await Numeroscope.create(numeroscope);
     await Rajyog.create(rajyog);
+    await Combination.create(combination);
     console.log("Data successfully loaded!");
   } catch (err) {
     console.log(err);
@@ -43,6 +49,7 @@ const deleteData = async () => {
     await Mulank.deleteMany();
     await Numeroscope.deleteMany();
     await Rajyog.deleteMany();
+    // await combination.deleteMany();
     console.log("Data successfully deleted!");
   } catch (err) {
     console.log(err);

@@ -1,6 +1,7 @@
 const numeroscopeModel = require("./../model/numeroscopeModel");
 const mulankModel = require("./../model/mulankModel");
 const rajyogModel = require("./../model/rajyogModel");
+const combinationModel = require("./../model/combinationModel");
 
 const getLuckyNumber = function(badNumbers) {
   totalNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -117,3 +118,17 @@ exports.getRajyog = async (req, res, next) => {
     console.log(err);
   }
 };
+
+exports.getCombination=async(req, res, next)=>{
+  try{
+    const result= await combinationModel.findOne({
+      pattern:`${req.params.pattern}`
+    })
+    res.status(200).json({
+      status: "success",
+      result,
+    });
+  }catch(err){
+    console.log(err)
+  }
+}
