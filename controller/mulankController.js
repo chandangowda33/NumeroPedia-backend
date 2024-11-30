@@ -13,6 +13,6 @@ exports.getMulank = async (req, res, next) => {
       },
     });
   } catch {
-    console.log("Eroor");
+    console.log("Error");
   }
 };
