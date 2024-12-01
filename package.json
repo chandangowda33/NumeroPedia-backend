@@ -7,7 +7,7 @@
     "main": false
   },
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "dev": "parcel index.html",
     "build": "esbuild ./public/js/welcome.js --platform=node --format=esm --outfile=/public/js/bundle.js",
     "watch": "esbuild ./public/js/welcome.js --platform=node --format=esm --outfile=/public/js/bundle.js --watch",
