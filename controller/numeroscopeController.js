@@ -74,10 +74,10 @@ exports.getReport = async (req, res, next) => {
 
     const badNumbers = [
       ...new Set([
-        ...mulankQualities.enemyNumbers,
-        ...mulankQualities.neutralNumber,
-        ...destinyQualities.enemyNumbers,
-        ...destinyQualities.neutralNumber,
+        ...(mulankQualities?.enemyNumbers || []),
+        ...(mulankQualities?.neutralNumber || []),
+        ...(destinyQualities?.enemyNumbers || []),
+        ...(destinyQualities?.neutralNumber || []),
       ]),
     ];
     // console.log(badNumbers);
@@ -119,16 +119,16 @@ exports.getRajyog = async (req, res, next) => {
   }
 };
 
-exports.getCombination=async(req, res, next)=>{
-  try{
-    const result= await combinationModel.findOne({
-      pattern:`${req.params.pattern}`
-    })
+exports.getCombination = async (req, res, next) => {
+  try {
+    const result = await combinationModel.findOne({
+      pattern: `${req.params.pattern}`,
+    });
     res.status(200).json({
       status: "success",
       result,
     });
-  }catch(err){
-    console.log(err)
+  } catch (err) {
+    console.log(err);
   }
-}
+};
