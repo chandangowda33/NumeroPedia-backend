@@ -50,14 +50,19 @@ exports.getReport = async (req, res, next) => {
 
     // console.log(mulankNumber);
 
-    const destinyNumber = DOB.reduce(
+    let destinyNumber = DOB.reduce(
       (acc, currentValue) => acc + currentValue,
       0
-    )
-      .toString()
-      .split("")
-      .map(Number)
-      .reduce((acc, currentValue) => acc + currentValue, 0);
+    );
+
+    // Reduce to a single digit
+    while (destinyNumber > 9) {
+      destinyNumber = destinyNumber
+        .toString()
+        .split("")
+        .map(Number)
+        .reduce((acc, currentValue) => acc + currentValue, 0);
+    }
 
     let destinyQualities;
 
